@@ -1,0 +1,29 @@
+{% extends "quoteapp/base.html" %} 
+
+{% block content %}
+<li><a href="{% url 'quoteapp:add_author' %}" role="button">Add Author</a></li>
+
+<main class="container">
+    <div class="authors-list">        
+        {% for author in authors %}
+        <div class="author">
+
+            <a href="{% url 'quoteapp:author' author.fullname %}"> {{ author.fullname }}</a>    <a href="{% url 'quoteapp:delete_author' author.fullname %}">Delete</a>
+                <!-- <a href="{% url 'quoteapp:author' author.fullname %}">Detail {{ author.fullname }}</a> -->
+            <!-- </div>
+            <div class="tags">
+                {% for tag in quote.tags.all %}
+                    <a href="{% url 'quoteapp:quotes_by_tag' tag.name %}" class="tag">{{ tag.name }}</a>
+                {% endfor %}
+            </div>
+        </div> -->
+        {% endfor %}
+
+
+        <!-- {% if tag %}
+        <h2>Quotes tagged with "{{ tag.name }}"</h2>
+        {% endif %} -->
+    </div>
+
+
+{% endblock %}

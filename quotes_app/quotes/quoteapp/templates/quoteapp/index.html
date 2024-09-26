@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quotes to Scrape</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'quoteapp/main.css' %}">
+</head>
+<body>
+
+<header>
+    <h1>
+        <a href="{% url 'quoteapp:main' %}">Quotes to Scrape</a>
+    <h1>
+</header>
+
+<nav class="menu">
+    {% if user.is_authenticated %}
+    <ul>
+        <li><a href="{% url 'quoteapp:add_tag' %}" role="button">Add Tag</a></li>
+        <li><a href="{% url 'quoteapp:add_quote' %}" role="button">Add Quote</a></li>
+        <li><a href="{% url 'quoteapp:add_author' %}" role="button">Add Author</a></li>
+        <li><a href="{% url 'quoteapp:my_quotes' %}" role="button">My Quotes</a></li>
+        <li><a href="{% url 'quoteapp:authors' %}" role="button">My Authors</a></li>
+        <li><a href="{% url 'users:profile' %}" role="button">My Profile</a></li>
+        <li><a href="{% url 'users:logout' %}" role="button">Logout</a></li>
+    </ul>
+    {% else %}
+    <ul>
+        <li><a href="{% url 'users:signup' %}" role="button">Sign Up</a></li>
+        <li><a href="{% url 'users:login' %}" role="button">Login</a></li>
+    </ul>
+    {% endif %}
+</nav>
+
+
+<main class="container">
+    <div class="quotes-list">
+        {% if tag %}
+        <h2>Quotes tagged with "{{ tag.name }}"</h2>
+        {% endif %}
+        {% for quote in page_obj %}
+        <div class="quote">
+            <div class="text">“{{ quote.text }}”</div>
+            <div class="author">
+                <a href="{% url 'quoteapp:author' quote.author.fullname %}">{{ quote.author.fullname }}</a>
+            </div>
+            <div class="tags">
+                {% for tag in quote.tags.all %}
+                    <a href="{% url 'quoteapp:quotes_by_tag' tag.name %}" class="tag">{{ tag.name }}</a>
+                {% endfor %}
+            </div>
+            {% if quote.user == request.user %}
+                <form action="{% url 'quoteapp:delete_quote' quote.id %}" method="post">
+                    {% csrf_token %}
+                <button type="submit">Delete quote</button>
+            </form>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    <div class="top-tags">
+        <h2>Top Ten Tags</h2>
+            <ul>
+            {% for tag in top_tags %}
+            <li>
+                <a href="{% url 'quoteapp:quotes_by_tag' tag.name %}" role="button">{{ tag.name }}</a>
+            </li>
+            {% endfor %}
+            </ul>
+    </div>
+</main>
+
+<div class="pagination">
+    <span>
+        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}:
+    </span>
+
+
+    {% if page_obj.has_previous %}
+        <a href="?page=1">First</a>
+        <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+    {% endif %}
+
+
+    {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+            <strong>{{ num }}</strong> 
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+            <a href="?page={{ num }}">{{ num }}</a> 
+        {% endif %}
+    {% endfor %}
+
+
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">Next</a>
+        <a href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+    {% endif %}
+</div>
+
+
+<footer>
+    <p>Quotes to Scrape © 2024. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

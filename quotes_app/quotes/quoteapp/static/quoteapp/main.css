@@ -1,0 +1,295 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+h1 a {
+    text-decoration: none; 
+    color: #fff;
+}
+
+
+.container {
+    display: flex;
+    width: 80%;
+    margin: 20px auto;
+}
+
+
+.container h2 {
+    font-size: 24px;
+    font-weight: 600;
+    text-align: left;
+    color: #4914e9;
+}
+
+.quotes-list {
+    flex: 1;
+}
+
+
+/* Основные стили для меню */
+.menu {
+    background-color: #333;  /* Фон меню */
+    padding: 0;
+    margin: 20px auto ;
+    display: flex;
+    justify-content: center;  /* Центрируем меню по горизонтали */
+}
+
+.menu ul {
+    list-style: none;  /* Убираем стандартные маркеры у списка */
+    margin: 0;
+    padding: 0;
+    display: flex;  /* Меню в виде горизонтального ряда */
+}
+
+.menu li {
+    margin: 0 15px;  /* Отступ между кнопками */
+}
+
+.menu a {
+    display: block;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;  /* Закругленные углы */
+    transition: background-color 0.3s ease, color 0.3s ease;  /* Плавная анимация */
+}
+
+/* Стили при наведении */
+.menu a:hover {
+    background-color: #007bff;  /* Синий фон при наведении */
+    color: white;  /* Белый текст при наведении */
+}
+
+/* Стили для активной/текущей страницы */
+.menu a.active {
+    background-color: #007bff;
+    color: white;
+}
+
+
+.quote {
+    background-color: #fff;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.quote .text {
+    font-size: 18px;
+    font-style: italic;
+    color: #555;
+}
+
+.quote .author {
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+.quote .author a {
+    color: #333;
+    text-decoration: none;
+}
+
+.quote .tags {
+    margin-top: 10px;
+}
+
+.quote .tags .tag {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 3px 8px;
+    margin-right: 5px;
+    border-radius: 3px;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+
+/* Стиль для контейнера Top Tags */
+.top-tags {
+    flex: 2;
+    padding-left: 20px;
+    max-width: 200px;
+    margin: 0;
+}
+
+/* Заголовок Top Ten Tags */
+.top-tags h2 {
+    font-size: 24px;
+    font-weight: 600;
+    text-align: left;
+    color: #4914e9;
+}
+
+/* Список тегов */
+.top-tags ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Стили для элементов списка */
+.top-tags ul li {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+/* Стили для ссылок тегов */
+/* .top-tags ul li a {
+    background-color: #0f43e1;
+    color: white;
+    padding: 0px 15px;
+    padding-block-start: 10px;
+    padding-block-end: 0px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+} */
+
+/* Первый тег (наибольший шрифт) */
+.top-tags ul li:nth-child(1) a {
+    font-size: 24px; /* Самый большой размер */
+    font-weight: bold;
+}
+
+/* Второй тег */
+.top-tags ul li:nth-child(2) a {
+    font-size: 22px;
+}
+
+/* Третий тег */
+.top-tags ul li:nth-child(3) a {
+    font-size: 20px;
+}
+
+/* Четвертый тег */
+.top-tags ul li:nth-child(4) a {
+    font-size: 18px;
+}
+
+/* Пятый тег */
+.top-tags ul li:nth-child(5) a {
+    font-size: 17px;
+}
+
+/* Шестой тег */
+.top-tags ul li:nth-child(6) a {
+    font-size: 16px;
+}
+
+/* Седьмой тег */
+.top-tags ul li:nth-child(7) a {
+    font-size: 15px;
+}
+
+/* Восьмой тег */
+.top-tags ul li:nth-child(8) a {
+    font-size: 14px;
+}
+
+/* Девятый тег */
+.top-tags ul li:nth-child(9) a {
+    font-size: 13px;
+}
+
+/* Десятый тег (самый маленький шрифт) */
+.top-tags ul li:nth-child(10) a {
+    font-size: 12px; /* Самый маленький размер */
+}
+
+
+.top-tags a {
+    background-color: #4717f2;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+
+/* Анимация при наведении на ссылки */
+.top-tags ul li a:hover {
+    background-color: #0bb9e0;
+    transform: scale(1.05);
+}
+
+
+footer {
+    text-align: center;
+    margin: 20px 0;
+    color: #555;
+}
+
+
+/* Общий стиль для контейнера пагинации */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Текст "Page X of Y" */
+.pagination span {
+    margin-right: 15px;
+    font-size: 16px;
+    color: #555;
+}
+
+/* Ссылки пагинации */
+.pagination a {
+    margin: 0 5px;
+    padding: 8px 12px;
+    text-decoration: none;
+    background-color: #4717f2;
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    font-size: 16px;
+}
+
+/* Ссылка при наведении */
+.pagination a:hover {
+    background-color: #069ef0;
+    transform: scale(1.05);
+}
+
+/* Текущая страница (активная) */
+.pagination strong {
+    margin: 0 5px;
+    padding: 8px 12px;
+    font-weight: bold;
+    font-size: 16px;
+    background-color: #e0e0e0;
+    color: #333;
+    border-radius: 5px;
+}
+
+/* Неактивные кнопки (если нет предыдущей или следующей страницы) */
+.pagination a[disabled] {
+    pointer-events: none;
+    background-color: #bdbdbd;
+}
+

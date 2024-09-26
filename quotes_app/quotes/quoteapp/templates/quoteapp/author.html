@@ -1,0 +1,19 @@
+{% extends "quoteapp/base.html" %} {% block content %}
+
+    <h1>{{ author.fullname }}</h1>
+    <p><strong>Born:</strong> {{ author.born_date }} in {{ author.born_location }}</p>
+    <p><strong>Description:</strong></p>
+    <p>{{ author.description }}</p>
+
+    <!-- <h2>Quotes by {{ author.fullname }}</h2>
+    <ul>
+        {% for quote in author.quote_set.all %}
+            <li>{{ quote.text }}</li>
+        {% endfor %}
+    </ul> -->
+    {% endblock %}
+
+    <a href="{% url 'quoteapp:main' %}">Back to quotes</a>
+
+</body>
+</html>
